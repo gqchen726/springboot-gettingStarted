@@ -3,8 +3,8 @@ spring:
     name: eurekaServer7001.com
   security:
     user:
-      name: user
-      password: 123456
+      name: admin
+      password: admin
 server:
   port: 7001
 eureka:
@@ -12,6 +12,13 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://eurekaServer7002.com:7002/eureka/
+      # 集群配置，指向其他eureka服务器
+      defaultZone: http://admin:admin@eurekaServer7002.com:7002/eureka/
+      # 单机配置，指向自己
+      # defaultZone: http://eurekaServer7001.com:7001/eureka/
   server:
-    renewalPercentThreshold: 0.49
+    # 关闭自我保护
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000
+#  server:
+#    renewalPercentThreshold: 0.49

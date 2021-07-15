@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/customer/payment")
 public class HelloController {
-    private final static String PAYMENT_URL = "http://localhost:8083/payment";
+    private final static String PAYMENT_URL = "http://PAYMENT";
     private final static String EMPLOYEE_URL = "http://localhost:8081/employee";
 
     @Resource
@@ -22,7 +22,7 @@ public class HelloController {
     @GetMapping("/get/{id}")
     @ResponseBody
     public CommonResult<Object> getOne(@PathVariable Long id) {
-        CommonResult<Object> result = restTemplate.getForObject(PAYMENT_URL+"/findById/"+id, CommonResult.class);
+        CommonResult<Object> result = restTemplate.getForObject(PAYMENT_URL+"/payment/findById/"+id, CommonResult.class);
         return result;
     }
 

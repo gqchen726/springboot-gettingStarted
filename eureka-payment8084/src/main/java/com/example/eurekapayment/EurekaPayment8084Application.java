@@ -2,7 +2,6 @@ package com.example.eurekapayment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
@@ -11,9 +10,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableDiscoveryClient
-public class EurekaPaymentApplication {
+public class EurekaPayment8084Application {
     public static void main(String[] args) {
-        SpringApplication.run(EurekaPaymentApplication.class,args);
+        SpringApplication.run(EurekaPayment8084Application.class,args);
     }
 }

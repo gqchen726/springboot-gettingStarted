@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.eurekapayment.mapper.PaymentMapper">
+
+<!--  Payment findById();-->
+  <select id="findById" resultMap="baseResultMap" >
+    select * from payments where id=#{id}
+  </select>
+
+  <resultMap id="baseResultMap" type="com.example.commons.entity.Payment">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="serial" jdbcType="VARCHAR" property="serial" />
+  </resultMap>
+
+<!--  int save();-->
+  <insert id="save" parameterType="com.example.commons.entity.Payment">
+    insert into payments values (#{id},#{serial})
+  </insert>
+
+</mapper>
