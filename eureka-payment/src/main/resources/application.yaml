@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: payment
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/springboot-mybatis?serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+server:
+  port: 8083
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eurekaServer7001.com:7001/eureka,http://eurekaServer7002.com:7002/eureka
+mybatis:
+  type-aliases-package: com.example.eurekapayment.entity
+  mapper-locations: mapper/*.xml

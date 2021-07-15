@@ -1,0 +1,41 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: provider
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/springboot-mybatis?serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunMillis: 60000
+    minEvicatableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatement: true
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eurekaServer7001.com/eureka/,http://eurekaServer7002.com/eureka/
+    # 是否注册到注册中心
+    register-with-eureka: true
+    # 是否检索注册中心的服务
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.example.eurekaprovider.entity

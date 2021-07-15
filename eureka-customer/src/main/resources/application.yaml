@@ -1,0 +1,12 @@
+server:
+  port: 8082
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eurekaServer7001.com/eureka/,http://eurekaServer7002.com/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: customer
