@@ -3,7 +3,7 @@
 * 学习springcloud整合eureka、openFeign、RestTemplate、mybatis
     * eureka练习所用主要微服务:
         > 其中 `eureka-server` `eureka-server-7002` 模拟微服务集群环境
-        > 其中 `eureka-payment` `eureka-payment8004` 模拟微服务与负载均衡
+        > ,`eureka-payment` `eureka-payment8004` 模拟微服务与负载均衡
         * server端: `eureka-server` `eureka-server-7002`
         * client端: 
             * 服务提供者: 
@@ -18,6 +18,10 @@
     > 在服务提供者`eureka-provider` 中练习使用
 
 # 学习笔记
+* 学习笔记的一级目录
+    * 一、SQL高级-索引
+    * 二、SpringBoot学习笔记
+    * 三、踩坑记录
 # 一、SQL高级-索引
 
 ## 1.索引是什么
