@@ -10,3 +10,10 @@ eureka:
 spring:
   application:
     name: customer
+logging:
+  level:
+    net:
+      biancheng:
+        feign_demo:
+          remote:
+            UserRemoteClient: DEBUG
