@@ -1,8 +1,23 @@
 #学习任务
 * 了解mysql索引
 * 学习springcloud整合eureka、openFeign、RestTemplate、mybatis
-* 使用mybatis-generator生成entity、mapper、*mapper.xml
+    * eureka练习所用主要微服务:
+        > 其中 `eureka-server` `eureka-server-7002` 模拟微服务集群环境
+        > 其中 `eureka-payment` `eureka-payment8004` 模拟微服务与负载均衡
+        * server端: `eureka-server` `eureka-server-7002`
+        * client端: 
+            * 服务提供者: 
+                > `eureka-provider` `eureka-payment` `eureka-payment8004`
+            * 服务消费者: `eureka-customer`
+    * openFeign & RestTemplate练习所用微服务: `eureka-customer`
+    * mybatis的crud
+        > 均在服务提供者练习使用
+* mybatis使用动态sql实现批量添加数据的练习
+    > 在服务提供者`eureka-provider` dao/EmployeeMapper.insertBatch()
+* 使用mybatis-generator自动生成entity、mapper、*mapper.xml
+    > 在服务提供者`eureka-provider` 中练习使用
 
+# 学习笔记
 # 一、SQL高级-索引
 
 ## 1.索引是什么
