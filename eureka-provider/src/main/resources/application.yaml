@@ -24,13 +24,18 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+#  cloud:
+#    inetutils:
+#      ignored-interfaces[0]: VirtualBox Host-Only Ethernet Adapter
 eureka:
   client:
     service-url:
       defaultZone: http://admin:admin@eurekaServer7001.com:7001/eureka/,http://admin:admin@eurekaServer7002.com:7002/eureka/
+#      defaultZone: http://dev.hzero.org:8000/eureka/
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.application.name}-${spring.cloud.client.ip-address}:${server.port}
+    ip-address: 10.211.169.235
+    instance-id: ${spring.application.name}-${eureka.instance.ip-address}:${server.port}
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
   configuration:

@@ -1,10 +1,12 @@
 package com.example.eurekacustomer.controller;
 
 import com.example.commons.entity.CommonResult;
+import com.example.commons.entity.Employee;
 import com.example.eurekacustomer.api.UserRemoteClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -42,12 +44,20 @@ public class HelloController {
         return result;
     }
 
+    @GetMapping("getForEntity/{id}")
+    public CommonResult<Employee> getOneEntity(@PathVariable Long id) {
+        ResponseEntity<CommonResult> entity = restTemplate.getForEntity(PAYMENT_URL + "/get/" + id, CommonResult.class);
+        if (entity.getStatusCode().is2xxSuccessful()) {
+            return entity.getBody();
+        } else {
+            return new CommonResult(entity.getStatusCode().value(),"获取数据失败");
+        }
+    }
+
 
 
     @GetMapping("/callHello/{id}")
     public Object callHello(@PathVariable Long id) {
-        //return restTemplate.getForObject("http://localhost:8083/house/hello",String.class);
-        //String result = restTemplate.getForObject("http://eureka-client-user-service/user/hello",String.class);
         Object result = userRemoteClient.hello(id);
         logger.info("调用结果：{}",result);
         return result;
