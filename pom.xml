@@ -119,6 +119,8 @@
         <module>commons</module>
         <module>eureka-server-7002</module>
         <module>eureka-payment8084</module>
+        <module>cloudproviderhystrixpayment8001</module>
+        <module>cloud-consumer-feign-hystrix-8002</module>
     </modules>
 
     <repositories>
