@@ -3,7 +3,6 @@ package com.example.eurekapayment.controller;
 import com.example.commons.entity.CommonResult;
 import com.example.commons.entity.Payment;
 import com.example.eurekapayment.service.PaymentService;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author: guoqing.chen01@hand-china.com 2021-07-14 19:59
@@ -64,5 +64,15 @@ public class PaymentController {
             logger.info("{} \t {} \t {} \t {}",instance.getHost(),instance.getPort(),instance.getServiceId(),instance.getUri());
         }
         return this.discoveryClient;
+    }
+
+    @GetMapping("/timeout")
+    public String paymentTimeout() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return serverPort;
     }
 }
