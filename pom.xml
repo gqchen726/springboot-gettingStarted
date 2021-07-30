@@ -122,6 +122,7 @@
         <module>cloud-consumer-feign-hystrix-8002</module>
         <module>cloud-provider-hystrix-payment8003</module>
         <module>cloud-hystrix-dashboard9001</module>
+        <module>cloud-gateway9527</module>
     </modules>
 
     <repositories>

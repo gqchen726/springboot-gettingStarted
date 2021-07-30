@@ -1,0 +1,47 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: payment-routh
+#          uri: http://localhost:8083
+          uri: lb://payment
+          predicates:
+            - Path=/payment/**
+#            - After=2021-07-30T20:08:15.216+08:00[Asia/Shanghai]
+            - Cookie=username,gqchen
+        - id: provider-routh
+#          uri: http://localhost:8081
+          uri: lb://povider
+          predicates:
+            - Path=/employee/**
+#        - id: customer_route
+#            uri: lb://CUSTOMER-HYSTRIX
+#            predicates:
+#              - Path=/customer-hystrix
+#            filters:
+#              - name: CircuitBreaker
+#                args:
+#                  name: myCircuitBreaker
+#                  fallbackUri: forward:/inCaseOfFailureUseThis
+#                  statusCodes:
+#                    - 500
+#                    - "NOT_FOUND"
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: 10.211.169.235
+    instance-id: ${spring.application.name}-${eureka.instance.ip-address}:${server.port}
+    # eureka客户端向服务端发送心跳的时间间隔
+    lease-renewal-interval-in-seconds: 10
+    # eureka服务端在收到客户端最后一次心跳后等待的时间上限，超时即剔除服务
+    lease-expiration-duration-in-seconds: 50
+  client:
+    service-url:
+      defaultZone: http://admin:admin@eurekaServer7001.com:7001/eureka/,http://admin:admin@eurekaServer7002.com:7002/eureka/
