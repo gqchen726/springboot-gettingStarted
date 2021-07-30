@@ -1,7 +1,6 @@
-package com.example.cloudproviderhystrixpayment8001.controller;
+package com.example.cloudproviderhystrixpayment8003.controller;
 
-import com.example.cloudproviderhystrixpayment8001.Service.PaymentServiceImpl;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.example.cloudproviderhystrixpayment8003.service.PaymentServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author: guoqing.chen01@hand-china.com 2021-07-29 18:15
@@ -40,4 +38,12 @@ public class PaymentController {
         return result;
     }
 
+    //====服务熔断
+
+    @GetMapping("/hystrix/circuit/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id) throws Exception {
+        String result = paymentService.paymentCircuitBreaker(id);
+        logger.info("******result: {}",result);
+        return result;
+    }
 }

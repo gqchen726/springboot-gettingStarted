@@ -1,4 +1,4 @@
-package com.example.cloudproviderhystrixpayment8001;
+package com.example.cloudproviderhystrixpayment8003;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,8 +10,8 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 
 @SpringBootApplication
 @EnableCircuitBreaker
-public class CloudProviderHystrixPayment8001Application {
+public class CloudProviderHystrixPayment8003Application {
     public static void main(String[] args) {
-        SpringApplication.run(CloudProviderHystrixPayment8001Application.class,args);
+        SpringApplication.run(CloudProviderHystrixPayment8003Application.class,args);
     }
 }
