@@ -1,6 +1,7 @@
 package com.example.cloudproviderhystrixpayment8001.controller;
 
 import com.example.cloudproviderhystrixpayment8001.Service.PaymentServiceImpl;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,12 +35,7 @@ public class PaymentController {
     }
     @GetMapping("/hystrix/timeout/{id}")
     public  String paymentInfo_Timeout(@PathVariable("id") Integer id) {
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String result = paymentService.paymentInfo_OK(id);
+        String result = paymentService.paymentInfo_Timeout(id);
         logger.info("*****result: {}",result);
         return result;
     }
