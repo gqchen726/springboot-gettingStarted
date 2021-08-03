@@ -88,4 +88,9 @@ public class HelloController {
         return paymentRemoteClient.paymentTimeout();
     }
 
+    @GetMapping("/zipkin")
+    public String zipkin() {
+        return paymentRemoteClient.zipkin();
+    }
+
 }

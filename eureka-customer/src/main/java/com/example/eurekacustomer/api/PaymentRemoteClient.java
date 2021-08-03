@@ -2,7 +2,6 @@ package com.example.eurekacustomer.api;
 
 import com.example.commons.entity.CommonResult;
 import com.example.commons.entity.Payment;
-import com.example.eurekacustomer.config.FeignConfiguration;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,4 +17,6 @@ public interface PaymentRemoteClient {
     CommonResult<Payment> findById(@PathVariable Long id);
     @GetMapping("/timeout")
     String paymentTimeout();
+    @GetMapping("/zipkin")
+    String zipkin();
 }

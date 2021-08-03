@@ -1,6 +1,6 @@
 spring:
   application:
-    name: eurekaServer7001.com
+    name: admin.com
   security:
     user:
       name: admin
@@ -15,7 +15,7 @@ eureka:
       # 集群配置，指向其他eureka服务器
       defaultZone: http://admin:admin@eurekaServer7002.com:7002/eureka/
       # 单机配置，指向自己
-#       defaultZone: http://admin:admin@eurekaServer7001.com:7001/eureka/
+#       defaultZone: http://admin:admin@admin.com:7001/eureka/
   server:
     # 关闭自我保护
     enable-self-preservation: false

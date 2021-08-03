@@ -460,7 +460,7 @@
 * 在启动配置文件application.yaml中配置相关信息
 
   ```yaml
-  spring:  application:  # 应用名称    name: eurekaServer7001.com    # spring-security,在登入注册中心或注册中心注册到注册中心需要验证  security:    user:      name: admin      password: adminserver:  port: 7001eureka:  client:  	# 是否注册到注册中心，作为服务端不需要    registerWithEureka: false    fetchRegistry: false    serviceUrl:      # 集群配置，指向其他eureka服务器      defaultZone: http://admin:admin@eurekaServer7002.com:7002/eureka/      # 单机配置，指向自己      # defaultZone: http://eurekaServer7001.com:7001/eureka/  server:    # 关闭自我保护    enable-self-preservation: false    eviction-interval-timer-in-ms: 2000
+  spring:  application:  # 应用名称    name: admin.com    # spring-security,在登入注册中心或注册中心注册到注册中心需要验证  security:    user:      name: admin      password: adminserver:  port: 7001eureka:  client:  	# 是否注册到注册中心，作为服务端不需要    registerWithEureka: false    fetchRegistry: false    serviceUrl:      # 集群配置，指向其他eureka服务器      defaultZone: http://admin:admin@eurekaServer7002.com:7002/eureka/      # 单机配置，指向自己      # defaultZone: http://admin.com:7001/eureka/  server:    # 关闭自我保护    enable-self-preservation: false    eviction-interval-timer-in-ms: 2000
   ```
 
 * 在Application.java启动类加入注解`@EnableEurekaServer`
@@ -480,7 +480,7 @@
 * 在启动配置文件application.yaml中配置相关信息
 
   ```yaml
-  server:  port: 8081spring:  application:    name: provider  datasource:    url: jdbc:mysql://127.0.0.1:3306/springboot-mybatis?serverTimezone=UTC&characterEncoding=utf-8    username: root    password: root    driver-class-name: com.mysql.cj.jdbc.Driver    type: com.alibaba.druid.pool.DruidDataSource    ...eureka:  client:    service-url:      defaultZone: http://admin:admin@eurekaServer7001.com:7001/eureka/,http://admin:admin@eurekaServer7002.com:7002/eureka/  instance:    prefer-ip-address: true    instance-id: ${spring.application.name}-${spring.cloud.client.ip-address}:${server.port}mybatis:  mapper-locations: classpath:mybatis/mapper/*.xml  configuration:    map-underscore-to-camel-case: true  type-aliases-package: com.example.eurekaprovider.entity
+  server:  port: 8081spring:  application:    name: provider  datasource:    url: jdbc:mysql://127.0.0.1:3306/springboot-mybatis?serverTimezone=UTC&characterEncoding=utf-8    username: root    password: root    driver-class-name: com.mysql.cj.jdbc.Driver    type: com.alibaba.druid.pool.DruidDataSource    ...eureka:  client:    service-url:      defaultZone: http://admin:admin@admin.com:7001/eureka/,http://admin:admin@eurekaServer7002.com:7002/eureka/  instance:    prefer-ip-address: true    instance-id: ${spring.application.name}-${spring.cloud.client.ip-address}:${server.port}mybatis:  mapper-locations: classpath:mybatis/mapper/*.xml  configuration:    map-underscore-to-camel-case: true  type-aliases-package: com.example.eurekaprovider.entity
   ```
 
 * 在Application.java启动类加入注解`@EnableEurekaServer`
@@ -502,7 +502,7 @@
 * application.yaml
 
   ```yaml
-  spring:  application:    name: eurekaServer7001.com  security:    user:      name: admin      password: admin
+  spring:  application:    name: admin.com  security:    user:      name: admin      password: admin
   ```
 
   

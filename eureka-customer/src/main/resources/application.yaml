@@ -3,15 +3,19 @@ server:
 eureka:
   instance:
     prefer-ip-address: true
-#    ip-address: 10.211.169.235
-    ip-address: 10.211.96.237
+    ip-address: admin.com
     instance-id: ${spring.application.name}-${eureka.instance.ip-address}:${server.port}
   client:
     service-url:
-      defaultZone: http://admin:admin@eurekaServer7001.com:7001/eureka/,http://admin:admin@eurekaServer7002.com:7002/eureka/
+      defaultZone: http://admin:admin@admin.com:7001/eureka/,http://admin:admin@eurekaServer7002.com:7002/eureka/
 spring:
   application:
     name: customer
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1 #采样率值介于0到1之间,1则表示全部采集
 logging:
   level:
     com:

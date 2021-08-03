@@ -6,13 +6,17 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1 #采样率值介于0到1之间,1则表示全部采集
 server:
   port: 8083
 eureka:
   instance:
     prefer-ip-address: true
-#    ip-address: 10.211.169.235
-    ip-address: 10.211.96.237
+    ip-address: admin.com
     instance-id: ${spring.application.name}-${eureka.instance.ip-address}:${server.port}
     # eureka客户端向服务端发送心跳的时间间隔
     lease-renewal-interval-in-seconds: 10
@@ -20,7 +24,7 @@ eureka:
     lease-expiration-duration-in-seconds: 50
   client:
     service-url:
-      defaultZone: http://admin:admin@eurekaServer7001.com:7001/eureka/,http://admin:admin@eurekaServer7002.com:7002/eureka/
+      defaultZone: http://admin:admin@admin.com:7001/eureka/,http://admin:admin@eurekaServer7002.com:7002/eureka/
 mybatis:
   type-aliases-package: com.example.eurekapayment.entity
   mapper-locations: mapper/*.xml
