@@ -11,7 +11,8 @@ server:
 eureka:
   instance:
     prefer-ip-address: true
-    ip-address: 10.211.169.235
+#    ip-address: 10.211.169.235
+    ip-address: 10.211.96.237
     instance-id: ${spring.application.name}-${eureka.instance.ip-address}:${server.port}
     # eureka客户端向服务端发送心跳的时间间隔
     lease-renewal-interval-in-seconds: 10

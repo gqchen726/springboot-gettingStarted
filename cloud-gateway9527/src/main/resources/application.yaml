@@ -15,7 +15,10 @@ spring:
           predicates:
             - Path=/payment/**
 #            - After=2021-07-30T20:08:15.216+08:00[Asia/Shanghai]
-            - Cookie=username,gqchen
+#            - Cookie=username,gqchen # 请求中必须包含Cookie“username”，且值必须为”gqchen“
+            - Header=X-Request-Id, \d+ # 请求头中必须有“X-Request-Id”，且值为正整数的正则表达式
+            - Method=GET
+            - Query=age, \d+ # 请求头中必须有名为 age 的参数，且必须为正整数
         - id: provider-routh
 #          uri: http://localhost:8081
           uri: lb://povider
@@ -36,7 +39,8 @@ spring:
 eureka:
   instance:
     prefer-ip-address: true
-    ip-address: 10.211.169.235
+#    ip-address: 10.211.169.235
+    ip-address: 10.211.96.237
     instance-id: ${spring.application.name}-${eureka.instance.ip-address}:${server.port}
     # eureka客户端向服务端发送心跳的时间间隔
     lease-renewal-interval-in-seconds: 10

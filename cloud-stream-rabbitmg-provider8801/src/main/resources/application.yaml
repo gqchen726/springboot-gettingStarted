@@ -1,0 +1,29 @@
+server:
+  port: 8801
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@eurekaServer7001.com:7001/eureka/,http://admin:admin@eurekaServer7002.com:7002/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: send8001.com
+spring:
+  application:
+    name: stream-server-provider8801
+  cloud:
+    stream:
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+      bindings:
+        output:
+          destination: studyExchange
+          context-type: application/json
+          binder: defaultRabbit

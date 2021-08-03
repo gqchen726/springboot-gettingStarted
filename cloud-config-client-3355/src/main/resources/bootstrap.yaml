@@ -1,0 +1,28 @@
+server:
+  port: 3355
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: main
+      name: config
+      profile: dev
+      uri: http://localhost:3344
+      request-connect-timeout: 5000
+      request-read-timeout: 8000
+  # rabbitMQ相关配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@eurekaServer7001.com:7001/eureka/,http://admin:admin@eurekaServer7002.com:7002/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, beans, env, metrics, refresh

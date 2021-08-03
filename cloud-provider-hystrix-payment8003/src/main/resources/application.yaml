@@ -6,7 +6,8 @@ server:
 eureka:
   instance:
     prefer-ip-address: true
-    ip-address: 10.211.169.235
+#    ip-address: 10.211.169.235
+    ip-address: 10.211.96.237
     instance-id: ${spring.application.name}-${eureka.instance.ip-address}:${server.port}
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 50

@@ -1,0 +1,32 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: config-center
+  cloud:
+    config:
+      server:
+        git:
+          username: gqchen726
+          password: CcDHSQJ444.
+#          uri: https://github.com/gqchen726/ConfigCenter.git
+          uri: https://gitee.com/gqchen726/ConfigCenter.git
+          search-paths:
+            - ConfigCenter
+          skip-ssl-validation: true
+          basedir: C:\project\ConfigCenter\
+      label: main
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@eurekaServer7001.com:7001/eureka/,http://admin:admin@eurekaServer7002.com:7002/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
